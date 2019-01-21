@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import os
 from django.conf import settings
+from django.core.validators import FileExtensionValidator
 
 from .models import *
 from .Util import *
@@ -322,9 +323,14 @@ def SubmissionRequest(request):
                 error_message = 'Sorry, your print quota is over...  Try again next month.'
                 raise NoRemainingQuotaException
 
+            validator = FileExtensionValidator(allowed_extensions=['stl']) 
+
             file_name = request.FILES['file'].name
             file_extension = file_name[-4:]
-            if(not(file_extension == '.stl')):
+
+            content_type = request.FILES['file'].content_type
+
+            if(not(file_extension == '.stl') and not(content_type == 'model/stl')):
                 error_message = 'Sorry, the file submitted is not a .stl file. Submit a .stl file to continue.'
                 raise WrongFileTypeException
 
