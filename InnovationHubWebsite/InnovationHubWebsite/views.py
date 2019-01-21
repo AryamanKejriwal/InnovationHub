@@ -322,6 +322,12 @@ def SubmissionRequest(request):
                 error_message = 'Sorry, your print quota is over...  Try again next month.'
                 raise NoRemainingQuotaException
 
+            file_name = request.FILES['file'].name
+            file_extension = file_name[-4:]
+            if(not(file_extension == '.stl')):
+                error_message = 'Sorry, the file submitted is not a .stl file. Submit a .stl file to continue.'
+                raise WrongFileTypeException
+
 
             newJob = Job()
             util   = Util()
@@ -626,7 +632,7 @@ def AddFeatured(request, jobid):
             featured.fk_job = job
             featured.save()
         return(redirect('/schedule/'))
-        
+
     else:
         return redirect('/infidel/')
 
