@@ -323,7 +323,7 @@ def SubmissionRequest(request):
                 error_message = 'Sorry, your print quota is over...  Try again next month.'
                 raise NoRemainingQuotaException
 
-            validator = FileExtensionValidator(allowed_extensions=['stl']) 
+            validator = FileExtensionValidator(allowed_extensions=['stl'])
 
             file_name = request.FILES['file'].name
             file_extension = file_name[-4:]
@@ -339,6 +339,7 @@ def SubmissionRequest(request):
             util   = Util()
 
             newJob.job_title = request.POST['printName']
+            newJob.file      = request.FILES['file']
             newJob.colour    = request.POST['colour']
 
             #pathSTL, pathOBJ = util.handle_file(request.FILES['file'], request.POST.get('printName'), request.user)
@@ -367,7 +368,8 @@ def SubmissionRequest(request):
 
 
             pathSTL, pathOBJ = util.handle_file(request.FILES['file'], request.POST['printName'], request.user, newJob.job_id)
-            newJob.file_path_stl = pathSTL
+            #newJob.file_path_stl = pathSTL
+            newJob.file_path_stl = request.FILES['file']
             newJob.file_path_obj = pathOBJ
 
             newJob.save()
@@ -394,7 +396,7 @@ def SubmissionRequest(request):
                 Statistic_obj.save()
             return redirect('fail/')
     except Exception as e:
-        #print(e)
+        print(e)
         month    = util.getCurrentMonth()
         objects  = list(Statistic.objects.filter(month_name = month))
         if(len(objects) > 0):

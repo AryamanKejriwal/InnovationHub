@@ -16,15 +16,20 @@ let init = function() {
 
   for(let i = 1; i <= num; i++) {
 
+    let file_name = '../../../../' + document.getElementById('modelName' + i).value;
+
+
     if(isHomePage == 'true' && i <= 4) {
       WIDTH  = 400;
       HEIGHT = 320;
+      file_name = '../../../../static/JS/3DModels/test_cube.stl';
     } else {
       WIDTH  = 300;
       HEIGHT = 240;
     };
 
     let tick = 0;
+
     let file_path = document.getElementById('modelName' + i).value;
     let container = document.getElementById(file_path);
     //let container = document.createElement('canvas');
@@ -57,9 +62,10 @@ let init = function() {
 
 
     //loading file
+    //let file_name = '../../../../static/JS/3DModels/test_cube.stl'
     let Mesh;
     let loader = new THREE.STLLoader();
-    loader.load('../../../../static/JS/3DModels/wolf.stl', function(geometry){
+    loader.load(file_name, function(geometry){
       let mesh = new THREE.Mesh(geometry, MATERIAL[1]);
       //mesh.position.set(0, -1, 0);
       //mesh.rotation.set( - Math.PI / 2, 0, 0 );

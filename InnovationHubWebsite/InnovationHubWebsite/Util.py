@@ -31,9 +31,17 @@ class Util:
         file.write(f)
         file.close()
 
+        #bucket_name = 'queue-manager-prints'
+        #key = default_storage.get_bucket(bucket_name).get_key(name1)
+        #dfilename = key.get_contents_to_filename(fname)
+
         #path = file.get()['Body'].read()
-        path = file.name
+        #path = file.name
         #print("Path:" + path)
+        #path = default_storage.path(name1)
+        #path = key
+
+        path = 'http://s3-us-west-2.amazonaws.com/queue-manager-prints/' + file.name
 
         path1 = path
         #path2 = 'static/JS/3DModels/' + name + '.obj'
@@ -46,7 +54,12 @@ class Util:
         name2 = str(jobid) + '_' + name + '.obj'
         file2 = default_storage.open(name2, 'w')
 
-        path2 = file2.name
+        #key2 = default_storage.get_bucket(bucket_name).get_key(name2)
+
+        #path2 = file2.name
+        #path2 = default_storage.path(name2)
+        #path2 = key2
+        path2 = 'http://s3-us-west-2.amazonaws.com/queue-manager-prints/' + file2.name
 
         #open(path2, 'a').close()
 
