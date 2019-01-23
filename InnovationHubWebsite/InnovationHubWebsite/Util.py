@@ -7,6 +7,8 @@ from django.core.files.storage import default_storage
 #import Blender
 import os
 import sys
+#from . import settings
+#import boto3
 #import bpy
 #from pymesh import stl, obj
 
@@ -31,6 +33,8 @@ class Util:
         file.write(f)
         file.close()
 
+        path = name1
+
         #bucket_name = 'queue-manager-prints'
         #key = default_storage.get_bucket(bucket_name).get_key(name1)
         #dfilename = key.get_contents_to_filename(fname)
@@ -41,7 +45,7 @@ class Util:
         #path = default_storage.path(name1)
         #path = key
 
-        path = 'http://s3-us-west-2.amazonaws.com/queue-manager-prints/' + file.name
+        #path = 'http://s3-us-west-2.amazonaws.com/queue-manager-prints/' + file.name
 
         path1 = path
         #path2 = 'static/JS/3DModels/' + name + '.obj'
@@ -52,14 +56,15 @@ class Util:
         f2 = f
 
         name2 = str(jobid) + '_' + name + '.obj'
-        file2 = default_storage.open(name2, 'w')
+        #file2 = default_storage.open(name2, 'w')
 
         #key2 = default_storage.get_bucket(bucket_name).get_key(name2)
 
         #path2 = file2.name
         #path2 = default_storage.path(name2)
         #path2 = key2
-        path2 = 'http://s3-us-west-2.amazonaws.com/queue-manager-prints/' + file2.name
+        #path2 = 'http://s3-us-west-2.amazonaws.com/queue-manager-prints/' + file2.name
+        path2 = name2
 
         #open(path2, 'a').close()
 
