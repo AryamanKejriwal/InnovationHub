@@ -22,7 +22,7 @@ let init = function() {
     if(isHomePage == 'true' && i <= 4) {
       WIDTH  = 400;
       HEIGHT = 320;
-      file_name = '../../../../static/JS/3DModels/wolf.stl';
+      file_name = '../../../../static/JS/3DModels/test_cube.stl';
     } else {
       WIDTH  = 300;
       HEIGHT = 240;
@@ -107,11 +107,11 @@ let init = function() {
       //mesh.scale.set(length_ratio/14, width_ratio/14, height_ratio/14);
 
       if(length_ratio < width_ratio && length_ratio < height_ratio) {
-        mesh.scale.set(length_ratio/14, length_ratio/14, length_ratio/14);
+        mesh.scale.set(length_ratio/17, length_ratio/17, length_ratio/17);
       } else if(width_ratio < height_ratio) {
-        mesh.scale.set(width_ratio/14, width_ratio/14, width_ratio/14);
+        mesh.scale.set(width_ratio/17, width_ratio/17, width_ratio/17);
       } else {
-        mesh.scale.set(height_ratio/14, height_ratio/14, height_ratio/14);
+        mesh.scale.set(height_ratio/17, height_ratio/17, height_ratio/17);
       };
 
       Mesh = mesh

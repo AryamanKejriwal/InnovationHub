@@ -322,11 +322,8 @@ def SubmissionRequest(request):
                 error_message = 'Sorry, your print quota is over...  Try again next month.'
                 raise NoRemainingQuotaException
 
-<<<<<<< HEAD
-            validator = FileExtensionValidator(allowed_extensions=['stl'])
 
-=======
->>>>>>> parent of d6d83ca... Check Uploaded File Extension
+            validator = FileExtensionValidator(allowed_extensions=['stl'])
             file_name = request.FILES['file'].name
             file_extension = file_name[-4:]
             if(not(file_extension == '.stl')):
