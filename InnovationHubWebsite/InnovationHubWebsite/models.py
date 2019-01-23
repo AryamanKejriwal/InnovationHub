@@ -28,7 +28,7 @@ class Profile(models.Model):
 class Job(models.Model):
     job_id          =models.AutoField(primary_key=True)
     job_title       =models.CharField(max_length=500)
-    file            =models.FileField(null=True)
+    file            =models.FileField(upload_to='stl-uploads')
     status          =models.CharField(max_length=20)             #in Queue, Printing, Printed
     colour          =models.CharField(max_length=10, null=True)
     upload_time     =models.DateTimeField(null=True)

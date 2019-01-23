@@ -33,7 +33,7 @@ class Util:
         file.write(f)
         file.close()
 
-        path = name1
+        path = file
 
         #bucket_name = 'queue-manager-prints'
         #key = default_storage.get_bucket(bucket_name).get_key(name1)
