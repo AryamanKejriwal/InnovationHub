@@ -22,7 +22,7 @@ let init = function() {
     if(isHomePage == 'true' && i <= 4) {
       WIDTH  = 400;
       HEIGHT = 320;
-      file_name = '../../../../static/JS/3DModels/test_cube.stl';
+      file_name = '../../../../static/JS/3DModels/wolf.stl';
     } else {
       WIDTH  = 300;
       HEIGHT = 240;
